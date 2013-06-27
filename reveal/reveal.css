@@ -48,6 +48,16 @@
 		font-weight: bold;
 		cursor: pointer;
 		} 
+		
+	p.lead {
+		font-size: 18px;
+		line-height: 24px;
+		margin: 0 0 18px;
+		color: black;
+		margin-bottom: 10px;
+		font-weight: bold;
+		font-family: Arial, Helvetica, 'Helvetica Neue', Verdana, sans-serif;
+	}
 	/*
 		
 	NOTES

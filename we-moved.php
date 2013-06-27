@@ -41,14 +41,16 @@ function zs_wm_place_reveal_script(){
 add_action('wp_enqueue_scripts', 'zs_wm_place_reveal_script');
 
 function zs_wm_forward_onto_new_site(){
-    $link = get_option('we_moved_link_setting', '#');
-	$wait = get_option('we_moved_time_setting', 0);
-	$msg = get_option('we_moved_msg_setting', 'You are being redirected to a new site.');
-    if ($wait > 0){
-		echo '<META HTTP-EQUIV="refresh" CONTENT="'.$wait.';URL='.$link.'">';
-		?><script type="text/javascript"><?php
-			echo 'var zs_wm_msg = "'.$msg.'"; ';
-		?></script><?php
+	if (!is_admin()){
+		$link = get_option('we_moved_link_setting', '#');
+		$wait = get_option('we_moved_time_setting', 0);
+		$msg = get_option('we_moved_msg_setting', 'You are being redirected to a new site.');
+		if ($wait > 0){
+			echo '<META HTTP-EQUIV="refresh" CONTENT="'.$wait.';URL='.$link.'">';
+			?><script type="text/javascript"><?php
+				echo 'var zs_wm_msg = "'.$msg.'"; ';
+			?></script><?php
+		}
 	}
 }
 add_action('wp_head', 'zs_wm_forward_onto_new_site');
