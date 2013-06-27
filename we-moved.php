@@ -94,13 +94,13 @@ function zs_wm_setting_section_callback_function() {
 
 function zs_wm_link_setting_callback_function(){
 	$default_zs_wm_link_value = get_option('we_moved_link_setting', ''); 
-	echo '<input id="we_moved_link_setting" name="we_moved_link_setting" type="url" class="we_moved_link_setting_class" value="'.$default_zs_wm_link_value.'" />';
+	echo '<input id="we_moved_link_setting" name="we_moved_link_setting" type="url" class="we_moved_link_setting_class" value="'.$default_zs_wm_link_value.'" size="100" />';
 	echo '<label class="description" for="we_moved_link_setting"> ' .__('URL (must start with http://) to redirect users towards.', 'zs_wm'). ' </label>'; 
 }
 
 function zs_wm_time_setting_callback_function(){
 	$default_zs_wm_time_value = get_option('we_moved_time_setting', 0); 
-	echo '<input id="we_moved_time_setting" name="we_moved_time_setting" type="number" class="we_moved_time_setting_class" value="'.$default_zs_wm_time_value.'" size="100" />';
+	echo '<input id="we_moved_time_setting" name="we_moved_time_setting" type="number" class="we_moved_time_setting_class" value="'.$default_zs_wm_time_value.'" />';
 	echo '<label class="description" for="we_moved_time_setting"> ' .__('Seconds to redirect user to source. (0 means no redirect)', 'zs_wm'). ' </label>'; 
 }
 
