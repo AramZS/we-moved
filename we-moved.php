@@ -4,7 +4,7 @@
 Plugin Name: We Moved
 Plugin URI: http://aramzs.me
 Description: This plugin will display an alert window, informing users of the move, and then redirect them in a user specified amount of time. 
-Version: 0.3
+Version: 0.4
 Author: Aram Zucker-Scharff
 Author URI: http://aramzs.me
 License: GPL2
@@ -45,6 +45,7 @@ function zs_wm_forward_onto_new_site(){
 		$link = get_option('we_moved_link_setting', '#');
 		$wait = get_option('we_moved_time_setting', 0);
 		$active = get_option('we_moved_active_setting');
+		$anchor = get_option('we_moved_anchor_setting','Click here to continue.');
 		$msg = get_option('we_moved_msg_setting', 'You are being redirected to a new site.');
 		$closable = get_option('we_moved_closer_setting'); 
 		if ($wait > 0){
@@ -57,7 +58,9 @@ function zs_wm_forward_onto_new_site(){
 				echo 'var zs_wm_closer = "'.$closable.'"; ';
 				if ($wait <= 0){
 					echo 'var zs_forward_link =  "'.$link.'"; ';
+					echo 'var zs_wm_anchor = "'.$anchor.'"; ';
 				}
+				
 			?></script><?php		
 		}
 	}
@@ -108,7 +111,15 @@ function zs_wm_site_option_set(){
 		'reading',
 		'we_moved_setting_section');	
 	
-	register_setting('reading','we_moved_closer_setting');		
+	register_setting('reading','we_moved_closer_setting');	
+
+ 	add_settings_field('we_moved_anchor_setting',
+		'We Moved: Link text',
+		'zs_wm_anchor_setting_callback_function',
+		'reading',
+		'we_moved_setting_section');	
+	
+	register_setting('reading','we_moved_anchor_setting');			
 	
 }
 
@@ -150,4 +161,10 @@ function zs_wm_closer_setting_callback_function(){
 	checked( (isset($default_zs_wm_msg_value) && ('closable' == $default_zs_wm_msg_value)) );
 	echo ' />';
 	echo '<label class="description" for="we_moved_closer_setting"> ' .__('Check to let users close the window.', 'zs_wm'). ' </label>'; 
+}
+
+function zs_wm_anchor_setting_callback_function(){
+	$default_zs_wm_anchor_value = get_option('we_moved_anchor_setting', 'You are being redirected to a new site.'); 
+	echo '<input id="we_moved_anchor_setting" name="we_moved_anchor_setting" type="text" class="we_moved_anchor_setting_class" value="'.htmlspecialchars ($default_zs_wm_anchor_value).'" size="100" />';
+	echo '<label class="description" for="we_moved_anchor_setting"> ' .__('Message to display as a link.', 'zs_wm'). ' </label>'; 
 }

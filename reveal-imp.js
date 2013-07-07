@@ -17,7 +17,7 @@ jQuery(document).ready(function() {
 		});	
 	}
 	if (zs_forward_link.length > 0){
-		jQuery('#movingAlong').append('<p><a href="'+zs_forward_link+'" target="_self">Click here to continue.</a></p>');
+		jQuery('#movingAlong').append('<p><a href="'+zs_forward_link+'" target="_self">'+zs_wm_anchor+'</a></p>');
 	}
 	// closeonbackgroundclick: true, 
 });
