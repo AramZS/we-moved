@@ -164,7 +164,7 @@ function zs_wm_closer_setting_callback_function(){
 }
 
 function zs_wm_anchor_setting_callback_function(){
-	$default_zs_wm_anchor_value = get_option('we_moved_anchor_setting', 'You are being redirected to a new site.'); 
+	$default_zs_wm_anchor_value = get_option('we_moved_anchor_setting', 'Click here to continue.'); 
 	echo '<input id="we_moved_anchor_setting" name="we_moved_anchor_setting" type="text" class="we_moved_anchor_setting_class" value="'.htmlspecialchars ($default_zs_wm_anchor_value).'" size="100" />';
 	echo '<label class="description" for="we_moved_anchor_setting"> ' .__('Message to display as a link.', 'zs_wm'). ' </label>'; 
 }
