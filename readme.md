@@ -1,4 +1,4 @@
-## Plugin Name: PressForward
+## Plugin Name: We Moved
 - Plugin URI: http://aramzs.me/
 - Description: This plugin will display an alert window, informing users of the move, and then redirect them in a user specified amount of time.
 - Version: 0.1
